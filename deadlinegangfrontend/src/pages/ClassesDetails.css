@@ -1,0 +1,443 @@
+/* ===== Classes Detail Page ===== */
+.class-details {
+    padding: 40px 32px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* ── Hero Card ── */
+.section1 {
+    text-align: center;
+    background-color: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: 44px 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: var(--shadow-sm);
+}
+
+.class-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: var(--white);
+    font-size: 2rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.class-name {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+.class-description {
+    font-size: 0.95rem;
+    color: var(--gray-500);
+    max-width: 480px;
+    margin: 0 auto 16px;
+    line-height: 1.7;
+}
+
+.class-meta {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+
+.meta-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-size: 0.78rem;
+    font-weight: 500;
+    background-color: var(--gray-100);
+    color: var(--gray-600);
+}
+
+.owner-badge {
+    background-color: #FEF9C3;
+    color: #854D0E;
+}
+
+.student-badge {
+    background-color: #DCFCE7;
+    color: #166534;
+}
+
+.add-post-btn {
+    display: inline-block;
+    padding: 10px 24px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.add-post-btn:hover {
+    background-color: var(--primary-dark);
+    box-shadow: var(--shadow-md);
+}
+
+.join-btn {
+    background-color: var(--success);
+}
+
+.join-btn:hover {
+    background-color: #059669;
+}
+
+/* Loading */
+.loading {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--gray-400);
+    padding: 80px 0;
+}
+
+/* ── Posts Grid ── */
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.post-card {
+    background-color: var(--white);
+    padding: 22px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--gray-200);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.post-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.post-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.post-card h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--gray-900);
+}
+
+.post-date {
+    font-size: 0.75rem;
+    color: var(--gray-400);
+    white-space: nowrap;
+    margin-top: 2px;
+}
+
+.post-card p {
+    color: var(--gray-500);
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+/* No posts / locked */
+.no-posts {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--gray-400);
+    font-size: 0.95rem;
+    background-color: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+}
+
+/* ── File Actions ── */
+.file-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+}
+
+.file-view-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: 1;
+    padding: 9px 14px;
+    background-color: var(--primary-soft);
+    border: 1.5px solid #C7D2FE;
+    border-radius: var(--radius-md);
+    color: var(--primary-dark);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    transition: background-color 0.2s;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.file-view-btn:hover {
+    background-color: #E0E7FF;
+    color: var(--primary-dark);
+}
+
+.file-download-btn-small {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 14px;
+    background-color: var(--gray-100);
+    border: 1.5px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    color: var(--gray-600);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+}
+
+.file-download-btn-small:hover {
+    background-color: var(--gray-200);
+    color: var(--gray-700);
+}
+
+/* ── File Upload Area ── */
+.file-upload-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.file-upload-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 14px;
+    border: 1.5px dashed var(--gray-300);
+    border-radius: var(--radius-md);
+    color: var(--gray-500);
+    font-size: 0.875rem;
+    cursor: pointer;
+    flex: 1;
+    transition: border-color 0.2s, color 0.2s, background-color 0.2s;
+}
+
+.file-upload-label:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background-color: var(--primary-soft);
+}
+
+.remove-file-btn {
+    background: none;
+    border: none;
+    color: var(--danger);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    transition: background-color 0.2s;
+}
+
+.remove-file-btn:hover {
+    background-color: #FEF2F2;
+}
+
+/* ── Modals ── */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+    backdrop-filter: blur(2px);
+}
+
+.popup-content {
+    background-color: var(--white);
+    padding: 32px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    width: 100%;
+    max-width: 440px;
+    border: 1px solid var(--gray-200);
+}
+
+.popup-content h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: 16px;
+}
+
+.popup-content input,
+.popup-content textarea {
+    width: 100%;
+    padding: 10px 14px;
+    margin-bottom: 12px;
+    border: 1.5px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
+    color: var(--gray-800);
+    background-color: var(--gray-50);
+    font-family: var(--font);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.popup-content input:focus,
+.popup-content textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    background-color: var(--white);
+}
+
+.popup-content textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.popup-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.popup-buttons button {
+    padding: 9px 20px;
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: var(--font);
+}
+
+.popup-buttons button:first-child {
+    background-color: var(--gray-100);
+    color: var(--gray-600);
+}
+
+.popup-buttons button:first-child:hover {
+    background-color: var(--gray-200);
+}
+
+.popup-buttons button:last-child {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+.popup-buttons button:last-child:hover {
+    background-color: var(--primary-dark);
+}
+
+.popup-buttons button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.otp-error {
+    color: var(--danger);
+    font-size: 0.82rem;
+    margin-bottom: 10px;
+}
+
+/* ── Post Card Actions (dots menu) ── */
+.post-card-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.post-menu-wrapper {
+    position: relative;
+}
+
+.post-menu-btn {
+    background: none;
+    border: none;
+    color: var(--gray-400);
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    transition: background-color 0.2s, color 0.2s;
+    line-height: 1;
+}
+
+.post-menu-btn:hover {
+    background-color: var(--gray-100);
+    color: var(--gray-700);
+}
+
+.post-menu-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 4px;
+    background-color: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    z-index: 50;
+    min-width: 130px;
+}
+
+.post-menu-dropdown button {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    padding: 9px 14px;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 0.85rem;
+    color: var(--gray-700);
+    cursor: pointer;
+    transition: background-color 0.15s;
+    font-family: var(--font);
+}
+
+.post-menu-dropdown button:hover {
+    background-color: var(--gray-50);
+}
+
+.post-menu-dropdown .delete-option {
+    color: var(--danger);
+}
+
+.post-menu-dropdown .delete-option:hover {
+    background-color: #FEF2F2;
+}

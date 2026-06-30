@@ -1,0 +1,141 @@
+/* ===== Signup Page ===== */
+.signup-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: var(--gray-50);
+    padding: 24px;
+}
+
+.signup-page h1 {
+    margin-bottom: 8px;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    letter-spacing: -0.5px;
+    text-align: center;
+}
+
+.signup-page .subtitle {
+    color: var(--gray-500);
+    font-size: 0.95rem;
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.signup-page form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    background-color: var(--white);
+    padding: 36px 32px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid var(--gray-200);
+}
+
+.signup-page input[type="text"],
+.signup-page input[type="email"],
+.signup-page input[type="password"],
+.signup-page select {
+    width: 100%;
+    padding: 11px 14px;
+    margin-bottom: 14px;
+    border: 1.5px solid var(--gray-200);
+    background-color: var(--gray-50);
+    color: var(--gray-800);
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    appearance: none;
+}
+
+.signup-page input[type="text"]::placeholder,
+.signup-page input[type="email"]::placeholder,
+.signup-page input[type="password"]::placeholder {
+    color: var(--gray-400);
+}
+
+.signup-page input[type="text"]:focus,
+.signup-page input[type="email"]:focus,
+.signup-page input[type="password"]:focus,
+.signup-page select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    background-color: var(--white);
+}
+
+/* OTP row */
+.signup-page .email-otp-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 14px;
+}
+
+.email-otp-container input[type="email"] {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.send-otp-btn {
+    white-space: nowrap;
+    padding: 11px 14px;
+    background-color: var(--primary-soft);
+    color: var(--primary);
+    border: 1.5px solid var(--primary);
+    border-radius: var(--radius-md);
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.send-otp-btn:hover {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+.signup-page button[type="submit"] {
+    width: 100%;
+    padding: 11px;
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    margin-top: 4px;
+}
+
+.signup-page button[type="submit"]:hover {
+    background-color: var(--primary-dark);
+    box-shadow: var(--shadow-md);
+}
+
+.login-link {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.login-link p {
+    color: var(--gray-500);
+    font-size: 0.875rem;
+}
+
+.login-link a {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}

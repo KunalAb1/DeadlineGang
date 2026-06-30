@@ -1,0 +1,232 @@
+/* ===== Homepage ===== */
+
+/* Hero */
+.hero {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: var(--white);
+    padding: 80px 32px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    opacity: 0.88;
+    max-width: 500px;
+    margin: 0 auto 32px;
+    line-height: 1.7;
+}
+
+.hero-btn {
+    display: inline-block;
+    background-color: var(--white);
+    color: var(--primary);
+    padding: 12px 28px;
+    border-radius: var(--radius-full);
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.hero-btn:hover {
+    box-shadow: 0 6px 24px rgba(0,0,0,0.15);
+    transform: translateY(-1px);
+    color: var(--primary-dark);
+}
+
+/* Section container */
+.home-section {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 32px;
+}
+
+.home-section h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: 24px;
+    letter-spacing: -0.3px;
+}
+
+/* Classroom / Course Cards Grid */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+    transition: box-shadow 0.2s, transform 0.2s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+    border-color: var(--primary-light);
+}
+
+.card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    background-color: var(--primary-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+}
+
+.card-icon svg {
+    width: 24px;
+    height: 24px;
+    color: var(--primary);
+}
+
+.card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gray-900);
+    margin-bottom: 6px;
+}
+
+.card p {
+    font-size: 0.85rem;
+    color: var(--gray-500);
+    line-height: 1.6;
+}
+
+/* Empty state */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--gray-400);
+}
+
+.empty-state p {
+    font-size: 0.95rem;
+}
+
+/* Features Section */
+.features-section {
+    background-color: var(--white);
+    border-top: 1px solid var(--gray-100);
+    border-bottom: 1px solid var(--gray-100);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 28px;
+}
+
+.feature-item {
+    text-align: center;
+    padding: 8px;
+}
+
+.feature-emoji {
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+
+.feature-item h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--gray-900);
+    margin-bottom: 6px;
+}
+
+.feature-item p {
+    font-size: 0.82rem;
+    color: var(--gray-500);
+    line-height: 1.6;
+}
+
+/* Classroom cards */
+.classroom-card {
+    background-color: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: 22px;
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+    transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.classroom-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+    border-color: var(--primary-light);
+}
+
+.classroom-card-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 12px;
+}
+
+.classroom-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 1.1rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.classroom-card h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--gray-900);
+    margin-bottom: 2px;
+}
+
+.classroom-card .classroom-meta {
+    font-size: 0.78rem;
+    color: var(--gray-400);
+}
+
+.classroom-card p {
+    font-size: 0.85rem;
+    color: var(--gray-500);
+    line-height: 1.6;
+}
+
+/* Section header row */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.section-header h2 {
+    margin-bottom: 0;
+}

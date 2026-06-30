@@ -1,0 +1,146 @@
+/* ===== Navbar ===== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 32px;
+    background-color: var(--white);
+    color: var(--gray-800);
+    height: 64px;
+    box-shadow: 0 1px 0 var(--gray-200);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.logo {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.search-input {
+    width: 220px;
+    padding: 8px 14px;
+    border: 1.5px solid var(--gray-200);
+    background-color: var(--gray-50);
+    color: var(--gray-800);
+    border-radius: var(--radius-full);
+    outline: none;
+    font-size: 0.875rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-input::placeholder {
+    color: var(--gray-400);
+}
+
+.search-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    background-color: var(--white);
+}
+
+.size-6 {
+    width: 20px;
+    height: 20px;
+    color: var(--gray-500);
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.size-6:hover {
+    color: var(--primary);
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.profile-icon {
+    color: var(--gray-600);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 6px;
+    border-radius: var(--radius-full);
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.profile-icon:hover {
+    background-color: var(--primary-soft);
+    color: var(--primary);
+}
+
+.profile-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.logout-btn {
+    background-color: transparent;
+    border: 1.5px solid var(--gray-200);
+    color: var(--gray-600);
+    padding: 7px 16px;
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.logout-btn:hover {
+    border-color: var(--danger);
+    color: var(--danger);
+    background-color: #FEF2F2;
+}
+
+.login-btn {
+    background-color: var(--primary);
+    border: none;
+    color: var(--white);
+    padding: 8px 20px;
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.login-btn:hover {
+    background-color: var(--primary-dark);
+    box-shadow: var(--shadow-md);
+    color: var(--white);
+}
+
+/* Profile toggle button */
+.profile-icon-btn {
+    background: none;
+    border: none;
+    padding: 6px;
+    border-radius: var(--radius-full);
+    color: var(--gray-600);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.profile-icon-btn:hover {
+    background-color: var(--primary-soft);
+    color: var(--primary);
+}
+
+.profile-icon-active {
+    background-color: var(--primary-soft);
+    color: var(--primary);
+}

@@ -1,0 +1,163 @@
+/* ===== GURUJI - Global Design Tokens ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Primary Palette */
+  --primary:        #4F46E5; /* Indigo */
+  --primary-light:  #6366F1;
+  --primary-dark:   #3730A3;
+  --primary-soft:   #EEF2FF; /* Light indigo tint for backgrounds */
+
+  /* Neutrals */
+  --white:          #FFFFFF;
+  --gray-50:        #F8FAFC;
+  --gray-100:       #F1F5F9;
+  --gray-200:       #E2E8F0;
+  --gray-300:       #CBD5E1;
+  --gray-400:       #94A3B8;
+  --gray-500:       #64748B;
+  --gray-600:       #475569;
+  --gray-700:       #334155;
+  --gray-800:       #1E293B;
+  --gray-900:       #0F172A;
+
+  /* Semantic */
+  --success:        #10B981;
+  --danger:         #EF4444;
+  --warning:        #F59E0B;
+
+  /* Shadows */
+  --shadow-sm:      0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md:      0 4px 16px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.04);
+  --shadow-lg:      0 10px 40px rgba(0,0,0,0.10), 0 4px 12px rgba(0,0,0,0.05);
+
+  /* Border Radius */
+  --radius-sm:      6px;
+  --radius-md:      10px;
+  --radius-lg:      16px;
+  --radius-full:    9999px;
+
+  /* Typography */
+  --font:           'Inter', system-ui, -apple-system, sans-serif;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font);
+  background-color: var(--gray-50);
+  color: var(--gray-800);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--primary-dark);
+}
+
+button {
+  font-family: var(--font);
+  cursor: pointer;
+}
+
+input, textarea, select {
+  font-family: var(--font);
+}
+
+/* ===== Custom Toast Notifications ===== */
+
+/* Base toast */
+.Toastify__toast {
+  font-family: var(--font) !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  border-radius: var(--radius-md) !important;
+  padding: 14px 16px !important;
+  box-shadow: var(--shadow-lg) !important;
+  min-height: unset !important;
+  border: 1px solid transparent !important;
+}
+
+/* Success */
+.Toastify__toast--success {
+  background-color: #F0FDF4 !important;
+  color: #166534 !important;
+  border-color: #BBF7D0 !important;
+}
+
+.Toastify__toast--success .Toastify__toast-icon svg {
+  fill: #16A34A !important;
+}
+
+.Toastify__progress-bar--success {
+  background: #16A34A !important;
+}
+
+/* Error */
+.Toastify__toast--error {
+  background-color: #FEF2F2 !important;
+  color: #991B1B !important;
+  border-color: #FECACA !important;
+}
+
+.Toastify__toast--error .Toastify__toast-icon svg {
+  fill: #DC2626 !important;
+}
+
+.Toastify__progress-bar--error {
+  background: #DC2626 !important;
+}
+
+/* Warning */
+.Toastify__toast--warning {
+  background-color: #FFFBEB !important;
+  color: #92400E !important;
+  border-color: #FDE68A !important;
+}
+
+.Toastify__toast--warning .Toastify__toast-icon svg {
+  fill: #D97706 !important;
+}
+
+.Toastify__progress-bar--warning {
+  background: #D97706 !important;
+}
+
+/* Info */
+.Toastify__toast--info {
+  background-color: var(--primary-soft) !important;
+  color: var(--primary-dark) !important;
+  border-color: #C7D2FE !important;
+}
+
+.Toastify__toast--info .Toastify__toast-icon svg {
+  fill: var(--primary) !important;
+}
+
+.Toastify__progress-bar--info {
+  background: var(--primary) !important;
+}
+
+/* Close button */
+.Toastify__close-button {
+  color: currentColor !important;
+  opacity: 0.5 !important;
+}
+
+.Toastify__close-button:hover {
+  opacity: 1 !important;
+}
+
+/* Container position */
+.Toastify__toast-container {
+  width: 340px !important;
+}
