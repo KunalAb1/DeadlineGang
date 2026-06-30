@@ -1,6 +1,6 @@
 const express = require('express');
-const User = require('../models/userModel')
-const Verification = require('../models/verificationModel');
+const User = require('../Models/userModel')
+const Verification = require('../Models/verificationModel');
 const responseFunction = require('../utils/responseFunction');
 const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
@@ -8,7 +8,7 @@ dotenv.config();
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const authTokenHandler = require('../middlewares/checkAuthToken');
+const authTokenHandler = require('../Middlewares/checkAuthToken');
 
 
 
