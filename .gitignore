@@ -1,20 +1,24 @@
 # Environment files
 .env
-.env.*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+!.env.example
 
-# Node modules
+# Dependencies
 **/node_modules/
 
-# Build folders
-**/dist/
+# Build output
 **/build/
+**/dist/
 
-# Logs
+# Log files
 *.log
 
 # OS files
 Thumbs.db
 .DS_Store
 
-# Ignore passwords file
+# Personal files
 Pass.txt
