@@ -144,3 +144,22 @@
     background-color: var(--primary-soft);
     color: var(--primary);
 }
+
+/* Dark mode toggle button */
+.theme-toggle-btn {
+    background: none;
+    border: 1.5px solid var(--gray-200);
+    border-radius: var(--radius-full);
+    padding: 5px 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: border-color 0.2s, background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle-btn:hover {
+    background-color: var(--gray-100);
+    border-color: var(--gray-300);
+}

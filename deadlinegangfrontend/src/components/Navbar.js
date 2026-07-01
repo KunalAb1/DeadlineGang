@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import './Navbar.css';
@@ -10,11 +10,27 @@ const Navbar = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
+    // Dark mode state — persists in localStorage
+    const [darkMode, setDarkMode] = useState(() => {
+        return localStorage.getItem('theme') === 'dark';
+    });
+
+    // Apply theme to body on mount and on toggle
+    useEffect(() => {
+        if (darkMode) {
+            document.body.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.body.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'light');
+        }
+    }, [darkMode]);
+
     const isOnProfile = location.pathname === '/profile';
 
     const handleProfileClick = () => {
         if (isOnProfile) {
-            navigate(-1); // go back if already on profile
+            navigate(-1);
         } else {
             navigate('/profile');
         }
@@ -34,6 +50,15 @@ const Navbar = () => {
             </div>
 
             <div className="navbar-right">
+                {/* Dark mode toggle */}
+                <button
+                    className="theme-toggle-btn"
+                    onClick={() => setDarkMode(!darkMode)}
+                    title={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+                >
+                    {darkMode ? '☀️' : '🌙'}
+                </button>
+
                 {auth.user ? (
                     <>
                         <button
@@ -42,13 +67,11 @@ const Navbar = () => {
                             title={isOnProfile ? 'Go back' : 'My Profile'}
                         >
                             {isOnProfile ? (
-                                // Show back arrow when on profile
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     strokeWidth={1.5} stroke="currentColor" className="size-6">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
                                 </svg>
                             ) : (
-                                // Show profile icon when not on profile
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     strokeWidth={1.5} stroke="currentColor" className="size-6">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />

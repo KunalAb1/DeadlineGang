@@ -1,14 +1,14 @@
-/* ===== GURUJI - Global Design Tokens ===== */
+/* ===== DeadlineGang - Global Design Tokens ===== */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
   /* Primary Palette */
-  --primary:        #4F46E5; /* Indigo */
+  --primary:        #4F46E5;
   --primary-light:  #6366F1;
   --primary-dark:   #3730A3;
-  --primary-soft:   #EEF2FF; /* Light indigo tint for backgrounds */
+  --primary-soft:   #EEF2FF;
 
-  /* Neutrals */
+  /* Neutrals - Light Mode */
   --white:          #FFFFFF;
   --gray-50:        #F8FAFC;
   --gray-100:       #F1F5F9;
@@ -39,6 +39,49 @@
 
   /* Typography */
   --font:           'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Semantic color aliases (used throughout app) */
+  --bg:             var(--gray-50);
+  --bg-card:        var(--white);
+  --bg-input:       var(--gray-50);
+  --border:         var(--gray-200);
+  --text:           var(--gray-800);
+  --text-muted:     var(--gray-500);
+  --navbar-bg:      var(--white);
+  --navbar-border:  var(--gray-200);
+}
+
+/* ===== Dark Mode ===== */
+[data-theme="dark"] {
+  --primary:        #6366F1;
+  --primary-light:  #818CF8;
+  --primary-dark:   #4F46E5;
+  --primary-soft:   #1E1B4B;
+
+  --white:          #1E293B;
+  --gray-50:        #0F172A;
+  --gray-100:       #1E293B;
+  --gray-200:       #334155;
+  --gray-300:       #475569;
+  --gray-400:       #64748B;
+  --gray-500:       #94A3B8;
+  --gray-600:       #CBD5E1;
+  --gray-700:       #E2E8F0;
+  --gray-800:       #F1F5F9;
+  --gray-900:       #F8FAFC;
+
+  --shadow-sm:      0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
+  --shadow-md:      0 4px 16px rgba(0,0,0,0.3), 0 2px 6px rgba(0,0,0,0.2);
+  --shadow-lg:      0 10px 40px rgba(0,0,0,0.4), 0 4px 12px rgba(0,0,0,0.3);
+
+  --bg:             #0F172A;
+  --bg-card:        #1E293B;
+  --bg-input:       #0F172A;
+  --border:         #334155;
+  --text:           #F1F5F9;
+  --text-muted:     #94A3B8;
+  --navbar-bg:      #1E293B;
+  --navbar-border:  #334155;
 }
 
 *, *::before, *::after {
@@ -49,10 +92,11 @@
 
 body {
   font-family: var(--font);
-  background-color: var(--gray-50);
-  color: var(--gray-800);
+  background-color: var(--bg);
+  color: var(--text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 a {
@@ -74,8 +118,6 @@ input, textarea, select {
 }
 
 /* ===== Custom Toast Notifications ===== */
-
-/* Base toast */
 .Toastify__toast {
   font-family: var(--font) !important;
   font-size: 0.875rem !important;
@@ -87,77 +129,38 @@ input, textarea, select {
   border: 1px solid transparent !important;
 }
 
-/* Success */
 .Toastify__toast--success {
   background-color: #F0FDF4 !important;
   color: #166534 !important;
   border-color: #BBF7D0 !important;
 }
+.Toastify__toast--success .Toastify__toast-icon svg { fill: #16A34A !important; }
+.Toastify__progress-bar--success { background: #16A34A !important; }
 
-.Toastify__toast--success .Toastify__toast-icon svg {
-  fill: #16A34A !important;
-}
-
-.Toastify__progress-bar--success {
-  background: #16A34A !important;
-}
-
-/* Error */
 .Toastify__toast--error {
   background-color: #FEF2F2 !important;
   color: #991B1B !important;
   border-color: #FECACA !important;
 }
+.Toastify__toast--error .Toastify__toast-icon svg { fill: #DC2626 !important; }
+.Toastify__progress-bar--error { background: #DC2626 !important; }
 
-.Toastify__toast--error .Toastify__toast-icon svg {
-  fill: #DC2626 !important;
-}
-
-.Toastify__progress-bar--error {
-  background: #DC2626 !important;
-}
-
-/* Warning */
 .Toastify__toast--warning {
   background-color: #FFFBEB !important;
   color: #92400E !important;
   border-color: #FDE68A !important;
 }
+.Toastify__toast--warning .Toastify__toast-icon svg { fill: #D97706 !important; }
+.Toastify__progress-bar--warning { background: #D97706 !important; }
 
-.Toastify__toast--warning .Toastify__toast-icon svg {
-  fill: #D97706 !important;
-}
-
-.Toastify__progress-bar--warning {
-  background: #D97706 !important;
-}
-
-/* Info */
 .Toastify__toast--info {
   background-color: var(--primary-soft) !important;
   color: var(--primary-dark) !important;
   border-color: #C7D2FE !important;
 }
+.Toastify__toast--info .Toastify__toast-icon svg { fill: var(--primary) !important; }
+.Toastify__progress-bar--info { background: var(--primary) !important; }
 
-.Toastify__toast--info .Toastify__toast-icon svg {
-  fill: var(--primary) !important;
-}
-
-.Toastify__progress-bar--info {
-  background: var(--primary) !important;
-}
-
-/* Close button */
-.Toastify__close-button {
-  color: currentColor !important;
-  opacity: 0.5 !important;
-}
-
-.Toastify__close-button:hover {
-  opacity: 1 !important;
-}
-
-/* Container position */
-.Toastify__toast-container {
-  width: 340px !important;
-}
+.Toastify__close-button { color: currentColor !important; opacity: 0.5 !important; }
+.Toastify__close-button:hover { opacity: 1 !important; }
+.Toastify__toast-container { width: 340px !important; }
