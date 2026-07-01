@@ -139,3 +139,23 @@
     color: var(--primary-dark);
     text-decoration: underline;
 }
+
+/* ===== Mobile Responsive ===== */
+@media (max-width: 480px) {
+    .signup-page form {
+        padding: 24px 16px;
+        width: 100%;
+    }
+    .signup-page h1 {
+        font-size: 1.4rem;
+    }
+    .signup-page {
+        padding: 16px;
+    }
+    .email-otp-container {
+        flex-direction: column;
+    }
+    .send-otp-btn {
+        width: 100%;
+    }
+}

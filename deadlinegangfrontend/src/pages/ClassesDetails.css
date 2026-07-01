@@ -441,3 +441,58 @@
 .post-menu-dropdown .delete-option:hover {
     background-color: #FEF2F2;
 }
+
+/* ===== Mobile Responsive ===== */
+@media (max-width: 768px) {
+    .class-details {
+        padding: 20px 16px;
+    }
+    .section1 {
+        padding: 28px 16px 24px;
+    }
+    .class-name {
+        font-size: 1.3rem;
+    }
+    .post-grid {
+        grid-template-columns: 1fr;
+    }
+    .popup-content {
+        padding: 24px 16px;
+        margin: 16px;
+        max-width: 100%;
+    }
+    .file-actions {
+        flex-direction: column;
+    }
+    .file-view-btn,
+    .file-download-btn-small {
+        width: 100%;
+        justify-content: center;
+    }
+    .class-meta {
+        gap: 6px;
+    }
+}
+
+/* ── Custom Delete Confirm Modal ── */
+.delete-confirm {
+    text-align: center;
+}
+
+.delete-icon {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+}
+
+.delete-confirm h3 {
+    color: var(--danger) !important;
+}
+
+.delete-confirm-btn {
+    background-color: var(--danger) !important;
+    color: white !important;
+}
+
+.delete-confirm-btn:hover {
+    background-color: #DC2626 !important;
+}

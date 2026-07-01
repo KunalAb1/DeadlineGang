@@ -230,3 +230,40 @@
 .section-header h2 {
     margin-bottom: 0;
 }
+
+/* ===== Mobile Responsive ===== */
+@media (max-width: 768px) {
+    .hero {
+        padding: 48px 20px;
+    }
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    .hero p {
+        font-size: 0.95rem;
+    }
+    .home-section {
+        padding: 32px 16px;
+    }
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .features-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+}

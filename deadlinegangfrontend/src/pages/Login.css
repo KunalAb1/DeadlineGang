@@ -102,3 +102,17 @@
   color: var(--primary-dark);
   text-decoration: underline;
 }
+
+/* ===== Mobile Responsive ===== */
+@media (max-width: 480px) {
+    .login-page form {
+        padding: 24px 16px;
+        width: 100%;
+    }
+    .login-page h1 {
+        font-size: 1.4rem;
+    }
+    .login-page {
+        padding: 16px;
+    }
+}

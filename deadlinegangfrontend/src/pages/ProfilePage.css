@@ -210,3 +210,32 @@
     color: var(--primary-dark);
     cursor: pointer;
 }
+
+/* ===== Mobile Responsive ===== */
+@media (max-width: 768px) {
+    .profile-page {
+        padding: 20px 16px;
+    }
+    .profile-info {
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+        padding: 20px 16px;
+    }
+    .profile-picture {
+        margin-right: 0;
+    }
+    .create-classroom-btn {
+        width: 100%;
+        margin-top: 8px;
+    }
+    .classroom-list th,
+    .classroom-list td {
+        padding: 10px 12px;
+        font-size: 0.8rem;
+    }
+    .popup-content {
+        padding: 24px 16px;
+        margin: 16px;
+    }
+}

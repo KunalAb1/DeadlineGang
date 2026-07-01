@@ -163,3 +163,36 @@
     background-color: var(--gray-100);
     border-color: var(--gray-300);
 }
+
+/* ===== Mobile Responsive Navbar ===== */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0 16px;
+        height: 56px;
+    }
+    .logo {
+        font-size: 1.1rem;
+    }
+    .search-input {
+        width: 130px;
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+    .logout-btn {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+    .login-btn {
+        padding: 6px 14px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-input {
+        width: 100px;
+    }
+    .logout-btn span {
+        display: none;
+    }
+}
