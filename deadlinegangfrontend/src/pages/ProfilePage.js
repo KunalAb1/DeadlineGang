@@ -175,7 +175,7 @@ const ProfilePage = () => {
 
 
                         {
-                            user.role == 'teacher' &&
+                            user.role === 'teacher' &&
                             <div className="classroom-list">
                                 <h3>Classrooms created by me</h3>
                                 <table>

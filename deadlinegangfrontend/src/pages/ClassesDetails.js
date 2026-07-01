@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import {  } from '../context/AuthContext';
 import { toast } from 'react-toastify';
 import './ClassesDetails.css';
 
@@ -42,7 +42,10 @@ const ClassesDetails = () => {
     }
   };
 
-  useEffect(() => { fetchClassDetails(); }, [classid]);
+  useEffect(() => { 
+    fetchClassDetails(); 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [classid]);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -235,7 +238,7 @@ const ClassesDetails = () => {
   if (loading) return <div className="loading">Loading...</div>;
 
   const isStudent = classroom?.students?.includes(user?.email);
-  const isOwner = classroom?.owner == user?._id;
+  const isOwner = classroom?.owner === user?._id;
   const avatarLetter = classroom?.name?.charAt(0).toUpperCase() || '?';
 
   return (
