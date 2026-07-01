@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './SearchPopup.css';
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 const SearchPopup = ({ onClose }) => {

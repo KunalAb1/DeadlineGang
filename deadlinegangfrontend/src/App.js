@@ -46,7 +46,7 @@ const ProtectedRoute = ({ children }) => {
     }
     checkLoginStatus();
 
-  }, [navigate])
+  }, [navigate, login])
   if (loading) {
     return <div>Loading...</div>; // You can add a spinner or loading indicator here
   }
