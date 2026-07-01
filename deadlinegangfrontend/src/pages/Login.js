@@ -10,7 +10,7 @@ const Login = () => {
     const { login } = useAuth();
     const navigate = useNavigate();
 
-    const [loading, setLoading] = useState(false); // Loading state for button
+    const [, setLoading] = useState(false); // Loading state for button
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -76,3 +76,4 @@ const Login = () => {
 }
 
 export default Login
+
