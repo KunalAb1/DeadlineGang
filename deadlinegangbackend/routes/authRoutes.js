@@ -15,7 +15,7 @@ const authTokenHandler = require('../Middlewares/checkAuthToken');
 const mailer = async (recieveremail, code) => {
     let transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
-        post: 587,
+        port: 587,
         secure: false,
         requireTLS: true,
         auth: {
