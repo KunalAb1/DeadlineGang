@@ -17,6 +17,7 @@ const ProtectedRoute = ({ children }) => {
   const [loading, setLoading] = useState(true); // Loading state while checking auth
   const navigate = useNavigate();
 
+  
 
   useEffect(() => {
     const checkLoginStatus = async () => {
@@ -55,6 +56,14 @@ const ProtectedRoute = ({ children }) => {
 }
 
 const App = () => {
+   useEffect(() => {
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/`).catch(() => {});
+    const keepAlive = setInterval(() => {
+      fetch(`${process.env.REACT_APP_API_BASE_URL}/`).catch(() => {});
+    }, 10 * 60 * 1000);
+    return () => clearInterval(keepAlive);
+  }, []);
+
   return (
     <AuthProvider>
       <Router>
