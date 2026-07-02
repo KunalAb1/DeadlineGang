@@ -44,7 +44,7 @@ const ClassesDetails = () => {
     }
   };
 
-  useEffect(() => { fetchClassDetails(); }, [classid]);
+  useEffect(() => { fetchClassDetails(); }, [classid]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -178,7 +178,7 @@ const ClassesDetails = () => {
   if (loading) return <div className="loading">Loading...</div>;
 
   const isStudent = classroom?.students?.includes(user?.email);
-  const isOwner = classroom?.owner == user?._id;
+  const isOwner = classroom?.owner === user?._id;
   const avatarLetter = classroom?.name?.charAt(0).toUpperCase() || '?';
 
   return (
@@ -328,3 +328,4 @@ const ClassesDetails = () => {
 };
 
 export default ClassesDetails;
+
