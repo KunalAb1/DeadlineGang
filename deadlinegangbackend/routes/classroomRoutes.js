@@ -223,6 +223,7 @@ router.get('/classrooms/search', async (req, res) => {
 });
 
 router.post('/request-to-join', async (req, res) => {
+     console.log('request-to-join hit', req.body);
     const { classroomId, studentEmail } = req.body;
     if (!classroomId || !studentEmail) return responseFunction(res, 400, 'Classroom ID and student email are required', null, false);
     try {
