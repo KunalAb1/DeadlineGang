@@ -240,6 +240,17 @@ router.post('/request-to-join', async (req, res) => {
         console.log('sending OTP to:', classOwner.email);
         const isSent = await mailer(classOwner.email, code);
         console.log('isSent:', isSent);
+
+        if (!isSent) return responseFunction(res, 500, 'Failed to send OTP', null, false);
+
+        const newClassroomJoin = new ClassroomJoin({ 
+                  classroomId, 
+                  studentEmail, 
+                  code, 
+                  classOwnerEmail: classOwner.email
+        });
+        await newClassroomJoin.save();
+       return responseFunction(res, 200, 'OTP sent to the class owner', null, true);
     } catch (err) {
         return responseFunction(res, 500, 'Internal server error', err, false);
     }
