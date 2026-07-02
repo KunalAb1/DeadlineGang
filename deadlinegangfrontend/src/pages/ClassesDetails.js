@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-toastify';
 import './ClassesDetails.css';
 
