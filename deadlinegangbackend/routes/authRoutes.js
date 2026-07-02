@@ -76,7 +76,7 @@ router.post('/register', async (req, res) => {
         if (user) return responseFunction(res, 400, 'User already exists', null, false);
         if (!verificationQueue) return responseFunction(res, 400, 'Please send OTP first', null, false);
 
-        const isMatch = otp == verificationQueue.code;
+        const isMatch = await bcrypt.compare(otp.toString(), verificationQueue.code);
         if (!isMatch) return responseFunction(res, 400, 'Invalid OTP', null, false);
 
         user = new User({ name, email, password, role });
