@@ -6,7 +6,7 @@ const ClassroomJoin = require('../Models/classroomJoinModel');
 const responseFunction = require('../utils/responseFunction');
 const authTokenHandler = require('../Middlewares/checkAuthToken');
 const router = express.Router();
-const nodemailer = require('nodemailer');
+const axios = require('axios');
 const cloudinary = require('cloudinary').v2;
 const multer = require('multer');
 
