@@ -24,7 +24,7 @@ const mailer = async (recieveremail, code) => {
         }
     })
     let info = await transporter.sendMail({
-        from: "Team MastersGang",
+        from: process.env.COMPANY_EMAIL,
         to: recieveremail,
         subject: "OTP for MastersGang",
         text: "Your OTP is " + code,
@@ -69,8 +69,9 @@ router.post('/sendotp', async (req, res, next) => {
         return responseFunction(res, 200, "OTP sent successfully", null, true)
     }
     catch (err) {
-        return responseFunction(res, 500, "Internal server error", err, false)
-    }
+    console.error("SEND OTP ERROR:", err);
+    return responseFunction(res, 500, err.message, null, false);
+}
 })
 
 
@@ -94,7 +95,7 @@ router.post('/register', async (req, res) => {
         if (!verificationQueue) {
             return responseFunction(res, 400, 'Please send OTP first', null, false);
         }
-        const isMatch = await bcrypt.compare(otp, verificationQueue.code);
+        const isMatch = otp == verificationQueue.code;
 
         if (!isMatch) {
             return responseFunction(res, 400, 'Invalid OTP', null, false);
