@@ -9,28 +9,29 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const authTokenHandler = require('../Middlewares/checkAuthToken');
 const axios = require('axios');
+const nodemailer = require('nodemailer');
 
 const mailer = async (receiverEmail, code) => {
     try {
-        const response = await axios.post(
-            'https://api.brevo.com/v3/smtp/email',
-            {
-                sender: { name: 'DeadlineGang', email: 'abhangkunal052@gmail.com' },
-                to: [{ email: receiverEmail }],
-                subject: 'OTP for DeadlineGang',
-                htmlContent: `<b>Your OTP is ${code}</b>`,
-            },
-            {
-                headers: {
-                    'api-key': process.env.BREVO_API_KEY,
-                    'Content-Type': 'application/json',
-                },
+        let transporter = nodemailer.createTransport({
+            host: "smtp.gmail.com",
+            port: 465,
+            secure: true, // true for port 465
+            auth: {
+                user: process.env.COMPANY_EMAIL,
+                pass: process.env.GMAIL_APP_PASSWORD
             }
-        );
-        console.log('Brevo response:', response.status);
-        return true;
+        });
+        let info = await transporter.sendMail({
+            from: process.env.COMPANY_EMAIL,
+            to: receiverEmail,
+            subject: "OTP for DeadlineGang",
+            html: `<b>Your OTP is ${code}</b>`,
+        });
+        console.log("Message sent:", info.messageId);
+        return info.messageId ? true : false;
     } catch (err) {
-        console.error('Mailer error:', err.response?.data || err.message);
+        console.error('Mailer error:', err.message);
         return false;
     }
 };
