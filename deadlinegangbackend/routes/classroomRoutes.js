@@ -228,15 +228,15 @@ router.post('/request-to-join', async (req, res) => {
     if (!classroomId || !studentEmail) return responseFunction(res, 400, 'Classroom ID and student email are required', null, false);
     try {
         const classroom = await Classroom.findById(classroomId);
+        console.log('classroom found:', classroom?.name);
         if (!classroom) return responseFunction(res, 404, 'Classroom not found', null, false);
         const classOwner = await User.findById(classroom.owner);
+        console.log('classOwner found:', classOwner?.email);
         if (!classOwner) return responseFunction(res, 404, 'Class owner not found', null, false);
         const code = Math.floor(100000 + Math.random() * 900000);
+        console.log('sending OTP to:', classOwner.email);
         const isSent = await mailer(classOwner.email, code);
-        if (!isSent) return responseFunction(res, 500, 'Failed to send OTP', null, false);
-        const newClassroomJoin = new ClassroomJoin({ classroomId, studentEmail, code, classOwnerEmail: classOwner.email });
-        await newClassroomJoin.save();
-        return responseFunction(res, 200, 'OTP sent to the class owner', null, true);
+        console.log('isSent:', isSent);
     } catch (err) {
         return responseFunction(res, 500, 'Internal server error', err, false);
     }
