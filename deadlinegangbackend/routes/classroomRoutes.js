@@ -55,25 +55,28 @@ const uploadToCloudinary = (buffer, originalName, mimetype) => {
 
 // Utility function to send email
 const mailer = async (receiverEmail, code) => {
-    let transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com",
-        port: 587,
-        secure: false,
-        requireTLS: true,
-        auth: {
-            user: process.env.COMPANY_EMAIL,
-            pass: process.env.GMAIL_APP_PASSWORD
-        }
-    });
-
-    let info = await transporter.sendMail({
-        from: "Team DeadlineGang",
-        to: receiverEmail,
-        subject: "OTP for DeadlineGang",
-        text: "Your OTP is " + code,
-        html: "<b>Your OTP is " + code + "</b>",
-    });
-    return info.messageId ? true : false;
+    try {
+        const response = await axios.post(
+            'https://api.brevo.com/v3/smtp/email',
+            {
+                sender: { name: 'DeadlineGang', email: 'abhangkunal052@gmail.com' },
+                to: [{ email: receiverEmail }],
+                subject: 'OTP for DeadlineGang',
+                htmlContent: `<b>Your OTP is ${code}</b>`,
+            },
+            {
+                headers: {
+                    'api-key': process.env.BREVO_API_KEY,
+                    'Content-Type': 'application/json',
+                },
+            }
+        );
+        console.log('Brevo response:', response.status);
+        return true;
+    } catch (err) {
+        console.error('Mailer error:', err.response?.data || err.message);
+        return false;
+    }
 };
 
 router.post('/create', authTokenHandler, async (req, res) => {
