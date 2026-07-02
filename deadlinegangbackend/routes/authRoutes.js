@@ -2,31 +2,35 @@ const express = require('express');
 const User = require('../Models/userModel')
 const Verification = require('../Models/verificationModel');
 const responseFunction = require('../utils/responseFunction');
-const { Resend } = require('resend');
 const dotenv = require('dotenv');
 dotenv.config();
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const authTokenHandler = require('../Middlewares/checkAuthToken');
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+const axios = require('axios');
 
 const mailer = async (receiverEmail, code) => {
     try {
-        const { error } = await resend.emails.send({
-            from: 'DeadlineGang <onboarding@resend.dev>',
-            to: receiverEmail,
-            subject: 'OTP for DeadlineGang',
-            html: `<b>Your OTP is ${code}</b>`,
-        });
-        if (error) {
-            console.error('Resend error:', error);
-            return false;
-        }
+        const response = await axios.post(
+            'https://api.brevo.com/v3/smtp/email',
+            {
+                sender: { name: 'DeadlineGang', email: 'abhangkunal052@gmail.com' },
+                to: [{ email: receiverEmail }],
+                subject: 'OTP for DeadlineGang',
+                htmlContent: `<b>Your OTP is ${code}</b>`,
+            },
+            {
+                headers: {
+                    'api-key': process.env.BREVO_API_KEY,
+                    'Content-Type': 'application/json',
+                },
+            }
+        );
+        console.log('Brevo response:', response.status);
         return true;
     } catch (err) {
-        console.error('Mailer error:', err);
+        console.error('Mailer error:', err.response?.data || err.message);
         return false;
     }
 };
@@ -71,7 +75,6 @@ router.post('/register', async (req, res) => {
         if (user) return responseFunction(res, 400, 'User already exists', null, false);
         if (!verificationQueue) return responseFunction(res, 400, 'Please send OTP first', null, false);
 
-        // Fixed: plain text comparison instead of bcrypt
         const isMatch = otp == verificationQueue.code;
         if (!isMatch) return responseFunction(res, 400, 'Invalid OTP', null, false);
 
