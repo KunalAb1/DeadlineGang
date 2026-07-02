@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './App.css'
 import { BrowserRouter as Router, Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
@@ -6,7 +6,6 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import HomePage from './pages/HomePage';
 import { AuthProvider, useAuth } from './context/AuthContext';
-
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ProfilePage from './pages/ProfilePage';
@@ -14,31 +13,28 @@ import ClassesDetails from './pages/ClassesDetails';
 
 const ProtectedRoute = ({ children }) => {
   const { auth, login } = useAuth();
-  const [loading, setLoading] = useState(true); // Loading state while checking auth
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-
-  
+  const checked = useRef(false);
 
   useEffect(() => {
+    if (checked.current) return;
+    checked.current = true;
+
     const checkLoginStatus = async () => {
       try {
         const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/auth/checklogin`, {
           method: 'GET',
-          credentials: 'include', // Include cookies for the auth token
+          credentials: 'include',
         });
         const data = await response.json();
-
         if (response.ok && data.ok) {
-          login({ userId: data.userId }); // Set user in context
-          setLoading(false); // User is logged in, loading is done
+          login({ userId: data.userId });
         } else {
           toast.error(data.message || 'Session expired. Please log in again.');
           navigate('/login');
         }
-
-
-      }
-      catch (error) {
+      } catch (error) {
         toast.error('Error checking login status.');
         navigate('/login');
       } finally {
@@ -46,17 +42,17 @@ const ProtectedRoute = ({ children }) => {
       }
     }
     checkLoginStatus();
+  }, []);
 
-  }, [navigate, login])
   if (loading) {
-    return <div>Loading...</div>; // You can add a spinner or loading indicator here
+    return <div>Loading...</div>;
   }
 
   return auth.user ? children : <Navigate to="/login" />;
 }
 
 const App = () => {
-   useEffect(() => {
+  useEffect(() => {
     fetch(`${process.env.REACT_APP_API_BASE_URL}/`).catch(() => {});
     const keepAlive = setInterval(() => {
       fetch(`${process.env.REACT_APP_API_BASE_URL}/`).catch(() => {});
@@ -86,7 +82,6 @@ const App = () => {
               </ProtectedRoute>
             }
           />
-
           <Route
             path="/classes/:classid"
             element={
@@ -95,19 +90,17 @@ const App = () => {
               </ProtectedRoute>
             }
           />
-
         </Routes>
         <ToastContainer
-              position="top-right"
-              autoClose={3000}
-              hideProgressBar={false}
-              newestOnTop
-              closeOnClick
-              pauseOnHover
-              draggable
-               theme="light"
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          pauseOnHover
+          draggable
+          theme="light"
         />
-
       </Router>
     </AuthProvider>
   )
