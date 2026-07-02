@@ -42,7 +42,7 @@ const ProtectedRoute = ({ children }) => {
       }
     }
     checkLoginStatus();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (loading) {
     return <div>Loading...</div>;
@@ -58,7 +58,7 @@ const App = () => {
       fetch(`${process.env.REACT_APP_API_BASE_URL}/`).catch(() => {});
     }, 10 * 60 * 1000);
     return () => clearInterval(keepAlive);
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <AuthProvider>

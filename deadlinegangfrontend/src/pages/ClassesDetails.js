@@ -329,3 +329,4 @@ const ClassesDetails = () => {
 
 export default ClassesDetails;
 
+
